@@ -10,8 +10,8 @@
 #define parseIAPwithRestore_ParseID_h
 
 #warning Get your own AppID and ClientKey from parse.com, these are invalid
-#define AppID @"L4VBxf5QCR2YA5MyudGlwiWGdo7NsuF5SVBHStmK"
-#define ClientKey @"NC8lvDKfRQiCvBYt4squYzt9b8DDGn6lSZ9PFiXH"
+#define AppID @"XXX"
+#define ClientKey @"XXX"
 
 #warning Setup your downloadNames in Data Browser on parse.com
 #define Download1 @"ab7adb41-ad61-4ac7-8488-992d1d6de4c7-down1.txt"
