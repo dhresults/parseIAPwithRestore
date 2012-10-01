@@ -7,13 +7,36 @@
 //
 
 #import "AppDelegate.h"
+#import <Parse/Parse.h>
+#import "ParseID.h"
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
-    return YES;
+  [Parse setApplicationId:AppID clientKey:ClientKey];
+  
+  [PFPurchase addObserverForProduct:Purchase1 block:^(SKPaymentTransaction *transaction) {
+    [PFPurchase downloadAssetForTransaction:transaction completion:
+     ^(NSString *filePath, NSError *error) {
+       NSLog(@"downloading 1 %@ %@",filePath,error);
+       [[NSNotificationCenter defaultCenter] postNotificationName:@"downloadFinished" object:[NSNumber numberWithInt:1]];
+     }];
+  }];
+  [PFPurchase addObserverForProduct:Purchase2 block:^(SKPaymentTransaction *transaction) {
+    [PFPurchase downloadAssetForTransaction:transaction completion:
+     ^(NSString *filePath, NSError *error) {
+       [[NSNotificationCenter defaultCenter] postNotificationName:@"downloadFinished" object:[NSNumber numberWithInt:2]];
+     }];
+  }];
+  [PFPurchase addObserverForProduct:Purchase3 block:^(SKPaymentTransaction *transaction) {
+    [PFPurchase downloadAssetForTransaction:transaction completion:
+     ^(NSString *filePath, NSError *error) {
+       [[NSNotificationCenter defaultCenter] postNotificationName:@"downloadFinished" object:[NSNumber numberWithInt:3]];
+     }];
+  }];
+
+  return YES;
 }
 							
 - (void)applicationWillResignActive:(UIApplication *)application

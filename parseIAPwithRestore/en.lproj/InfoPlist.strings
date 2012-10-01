@@ -1,2 +1,6 @@
 /* Localized versions of Info.plist keys */
 
+/*
+  CFBundleDisplayName = "Parse IAP with Restore";
+  CFBundleName = "Pars'd IAP";
+*/
